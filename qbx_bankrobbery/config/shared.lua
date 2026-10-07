@@ -28,6 +28,7 @@ return {
             camId = 21,
             isOpened = false,
             innerGrateOpened = false,
+            hackAttempts = 0,
             lockers = {
                 [1] = {coords = vec3(311.16, -287.71, 54.14), isBusy = false, isOpened = false},
                 [2] = {coords = vec3(311.86, -286.21, 54.14), isBusy = false, isOpened = false},
@@ -51,6 +52,7 @@ return {
             camId = 22,
             isOpened = false,
             innerGrateOpened = false,
+            hackAttempts = 0,
             lockers = {
                 [1] = {coords = vec3(149.84, -1044.9, 29.34), isBusy = false, isOpened = false},
                 [2] = {coords = vec3(151.16, -1046.64, 29.34), isBusy = false, isOpened = false},
@@ -74,6 +76,7 @@ return {
             camId = 23,
             isOpened = false,
             innerGrateOpened = false,
+            hackAttempts = 0,
             lockers = {
                 [1] = {coords = vec3(-350.99, -54.13, 49.01), isBusy = false, isOpened = false},
                 [2] = {coords = vec3(-349.53, -55.77, 49.01), isBusy = false, isOpened = false},
@@ -97,6 +100,7 @@ return {
             camId = 24,
             isOpened = false,
             innerGrateOpened = false,
+            hackAttempts = 0,
             lockers = {
                 [1] = {coords = vec3(-1209.68, -333.65, 37.75), isBusy = false, isOpened = false},
                 [2] = {coords = vec3(-1207.46, -333.77, 37.75), isBusy = false, isOpened = false},
@@ -120,6 +124,7 @@ return {
             camId = 25,
             isOpened = false,
             innerGrateOpened = false,
+            hackAttempts = 0,
             lockers = {
                 [1] = {coords = vec3(-2958.54, 484.1, 15.67), isBusy = false, isOpened = false},
                 [2] = {coords = vec3(-2957.3, 485.95, 15.67), isBusy = false, isOpened = false},
@@ -143,6 +148,7 @@ return {
             camId = 25,
             isOpened = false,
             innerGrateOpened = false,
+            hackAttempts = 0,
             lockers = {
                 [1] = {coords = vec3(1173.69, 2710.76, 38.07), isBusy = false, isOpened = false},
                 [2] = {coords = vec3(1171.78, 2711.94, 38.07), isBusy = false, isOpened = false},
@@ -170,11 +176,13 @@ return {
                 [1] = {coords = vec3(-106.11, 6475.36, 31.62),
                     isOpened = false,
             innerGrateOpened = false,
+            hackAttempts = 0,
                     doorId = 5},
             },
             camId = 26,
             isOpened = false,
             innerGrateOpened = false,
+            hackAttempts = 0,
             lockers = {
                 [1] = {coords = vec3(-107.4, 6473.87, 31.62), isBusy = false, isOpened = false},
                 [2] = {coords = vec3(-107.66, 6475.61, 31.62), isBusy = false, isOpened = false},
@@ -200,13 +208,16 @@ return {
             },
             thermite = {
                 [1] = {coords = vec3(252.55, 221.15, 101.68), isOpened = false,
-            innerGrateOpened = false, doorId = 2},
+            innerGrateOpened = false,
+            hackAttempts = 0, doorId = 2},
                 [2] = {coords = vec3(261.15, 215.21, 101.68), isOpened = false,
-            innerGrateOpened = false, doorId = 3},
+            innerGrateOpened = false,
+            hackAttempts = 0, doorId = 3},
             },
             camId = 26,
             isOpened = false,
             innerGrateOpened = false,
+            hackAttempts = 0,
             lockers = {
                 [1] = {coords = vec3(258.57, 218.36, 101.68), isBusy = false, isOpened = false},
                 [2] = {coords = vec3(260.82, 217.62, 101.68), isBusy = false, isOpened = false},

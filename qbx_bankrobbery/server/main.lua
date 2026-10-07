@@ -300,6 +300,7 @@ AddEventHandler('qbx_bankrobbery:server:SetSmallBankTimeout', function(bankId)
     CreateThread(function()
         SetTimeout(60000 * 30, function()
             sharedConfig.smallBanks[bankId].innerGrateOpened = false
+            sharedConfig.smallBanks[bankId].hackAttempts = 0
             for k in pairs(sharedConfig.smallBanks[bankId].lockers) do
                 sharedConfig.smallBanks[bankId].lockers[k].isOpened = false
                 sharedConfig.smallBanks[bankId].lockers[k].isBusy = false
@@ -444,4 +445,9 @@ end)
 RegisterNetEvent('qbx_bankrobbery:server:setInnerGrateOpened', function(bankId)
     sharedConfig.smallBanks[bankId].innerGrateOpened = true
     TriggerClientEvent('qbx_bankrobbery:client:setInnerGrateOpened', -1, bankId)
+end)
+
+RegisterNetEvent('qbx_bankrobbery:server:incrementHackAttempts', function(bankId)
+    sharedConfig.smallBanks[bankId].hackAttempts = sharedConfig.smallBanks[bankId].hackAttempts + 1
+    TriggerClientEvent('qbx_bankrobbery:client:syncHackAttempts', -1, bankId, sharedConfig.smallBanks[bankId].hackAttempts)
 end)

@@ -10,6 +10,13 @@ function ResetBankDoors()
         local coords = sharedConfig.smallBanks[k].coords
         local object = GetClosestObjectOfType(coords.x, coords.y, coords.z, 5.0, sharedConfig.smallBanks[k].object, false, false, false)
         resetDoor(object, sharedConfig.smallBanks[k])
+
+        -- Reset inner grate heading and freeze it
+        local innerGrate = GetClosestObjectOfType(coords.x, coords.y, coords.z, 5.0, `v_ilev_gb_vaubar`, false, false, false)
+        if innerGrate ~= 0 then
+            SetEntityHeading(innerGrate, sharedConfig.smallBanks[k].heading.closed)
+            FreezeEntityPosition(innerGrate, true)
+        end
     end
 
     local paletoCoords = sharedConfig.bigBanks.paleto.coords

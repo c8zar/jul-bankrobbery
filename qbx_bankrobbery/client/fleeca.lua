@@ -95,6 +95,7 @@ end)
 RegisterNetEvent('qbx_bankrobbery:client:ResetFleecaLockers', function(BankId)
     sharedConfig.smallBanks[BankId].isOpened = false
     sharedConfig.smallBanks[BankId].innerGrateOpened = false
+    sharedConfig.smallBanks[BankId].hackAttempts = 0
     for k in pairs(sharedConfig.smallBanks[BankId].lockers) do
         sharedConfig.smallBanks[BankId].lockers[k].isOpened = false
         sharedConfig.smallBanks[BankId].lockers[k].isBusy = false
@@ -227,11 +228,14 @@ CreateThread(function()
             distance = 2.0,
             canInteract = function(entity, distance, coords, name)
                 -- Checking if closestBank is set implies they are at a Fleeca bank
-                return closestBank ~= 0 and exports.ox_inventory:Search('count', 'laptop_green') > 0
+                return closestBank ~= 0 and exports.ox_inventory:Search('count', 'laptop_green') > 0 and not sharedConfig.smallBanks[closestBank].innerGrateOpened
             end,
             onSelect = function(data)
                 local entity = data.entity
 
+                if sharedConfig.smallBanks[closestBank].hackAttempts >= 3 then
+                    return exports.qbx_core:Notify(locale('error.door_stuck') or 'The system is locked out. The door is stuck!', 'error', 5500)
+                end
                 if CurrentCops < config.minFleecaPolice then
                     return exports.qbx_core:Notify(locale('error.minimum_police_required', {police = config.minFleecaPolice}), 'error')
                 end
@@ -262,6 +266,7 @@ CreateThread(function()
                             TriggerServerEvent('qbx_bankrobbery:server:setInnerGrateOpened', closestBank)
                             exports.qbx_core:Notify(locale('general.door_unlocked') or 'Success! The door is unlocked.', 'success')
                         else
+                            TriggerServerEvent('qbx_bankrobbery:server:incrementHackAttempts', closestBank)
                             exports.qbx_core:Notify(locale('error.hack_failed') or 'You failed the hack.', 'error')
                         end
                     end)
@@ -277,4 +282,8 @@ RegisterNetEvent('qbx_bankrobbery:client:setInnerGrateOpened', function(bankId)
     sharedConfig.smallBanks[bankId].innerGrateOpened = true
 
     -- Freeze logic is in client/doors.lua, it will read innerGrateOpened
+end)
+
+RegisterNetEvent('qbx_bankrobbery:client:syncHackAttempts', function(bankId, attempts)
+    sharedConfig.smallBanks[bankId].hackAttempts = attempts
 end)
